@@ -1,0 +1,16 @@
+version: "3"
+services: 
+  factorio:
+    image: factoriotools/factorio:latest
+    ports:
+      - "34197:34197/udp"
+    volumes:
+    - factorio:/factorio
+    - ./data/config/server-settings.json:/server-settings.json
+    environment:
+      - INSTANCE_NAME=Skullgames
+      - INSTANCE_DESC=MultiClan-Server
+    entrypoint: /bin/sh -c "mkdir -p /factorio/config && envsubst < /server-settings.json > /factorio/config/server-settings.json && exec /docker-entrypoint.sh"
+
+volumes:
+  factorio:
