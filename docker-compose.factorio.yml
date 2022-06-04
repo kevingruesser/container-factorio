@@ -12,5 +12,13 @@ services:
       - INSTANCE_DESC=MultiClan-Server
     entrypoint: /bin/sh -c "mkdir -p /factorio/config && envsubst < /server-settings.json > /factorio/config/server-settings.json && exec /docker-entrypoint.sh"
 
+  dropbox:
+    image: rbonghi/dropbox:latest
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DROPBOX_TOKEN=${DROPBOXTOKEN}
+    volumes:
+      - factorio:/dropbox
+
 volumes:
   factorio:
