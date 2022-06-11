@@ -16,7 +16,7 @@ services:
     image: rbonghi/dropbox:latest
     environment:
       - PYTHONUNBUFFERED=1
-      - DROPBOX_TOKEN=${DROPBOXTOKEN}
+      - DROPBOX_TOKEN=${DROPBOX_TOKEN}
     volumes:
       - factorio:/dropbox
 
